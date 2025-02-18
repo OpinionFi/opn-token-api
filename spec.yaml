@@ -1,0 +1,13 @@
+name: opn-token-api
+services:
+  - name: web
+    environment_slug: python
+    instance_count: 1
+    instance_size_slug: basic-xs
+    envs:
+      - key: FLASK_ENV
+        value: production
+      - key: SECRET_KEY
+        value: your_secret_key
+    source_dir: .
+    run_command: gunicorn --worker-tmp-dir /dev/shm app.py
